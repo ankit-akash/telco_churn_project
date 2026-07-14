@@ -1,7 +1,24 @@
+# venvs
 .venv/
 venv/
+env/
+
+# OS cruft
+.DS_Store
+
+# Python cache
 __pycache__/
-.pytest_cache/
+*.py[cod]
+*.pyo
+
+# Big artifacts we don't want in git
+mlruns/
+artifacts/
 data/raw/
 data/processed/
-mlruns/
+
+# BUT keep our bundled serving model in the repo
+!src/serving/model/
+!src/serving/model/**
+
+mlflow.db
