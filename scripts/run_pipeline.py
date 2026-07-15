@@ -255,7 +255,7 @@ def main(args):
             "src",
             "serving",
             "model",
-            run.info.run_id
+            "latest"
         )
 
         if os.path.exists(serving_dir):

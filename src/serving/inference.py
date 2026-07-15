@@ -36,32 +36,16 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MODEL_ROOT = os.path.join(BASE_DIR, "model")
 
-runs = [
-    os.path.join(MODEL_ROOT, d)
-    for d in os.listdir(MODEL_ROOT)
-    if os.path.isdir(os.path.join(MODEL_ROOT, d))
-]
+MODEL_DIR = os.path.join(MODEL_ROOT, "latest")
 
-# Find latest copied model
-latest_run = None
-
-
-for run in sorted(runs, key=os.path.getmtime, reverse=True):
-    if os.path.exists(os.path.join(run, "MLmodel")):
-        latest_run = run
-        break
-
-
-if latest_run is None:
-    raise Exception("No MLflow model found.")
-
-MODEL_DIR = latest_run
+if not os.path.exists(os.path.join(MODEL_DIR, "MLmodel")):
+    raise Exception("No model found in src/serving/model/latest")
 
 print("Loading model from:")
 print(MODEL_DIR)
 
 FEATURE_FILE = os.path.join(
-    latest_run,
+    MODEL_DIR,
     "feature_columns.txt"
 )
 
