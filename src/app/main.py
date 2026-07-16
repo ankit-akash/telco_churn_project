@@ -23,15 +23,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# === HEALTH CHECK ENDPOINT ===
-# CRITICAL: Required for AWS Application Load Balancer health checks
-@app.get("/")
-def root():
-    """
-    Health check endpoint for monitoring and load balancer health checks.
-    """
-    return {"status": "ok"}
-
 # === REQUEST DATA SCHEMA ===
 # Pydantic model for automatic validation and API documentation
 class CustomerData(BaseModel):
@@ -205,5 +196,5 @@ demo = gr.Interface(
 app = gr.mount_gradio_app(
     app,           # FastAPI application instance
     demo,          # Gradio interface
-    path="/ui"     # URL path where Gradio will be accessible
+    path="/"     # URL path where Gradio will be accessible
 )
