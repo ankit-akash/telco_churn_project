@@ -228,7 +228,7 @@ http://127.0.0.1:8000/docs
 # 🎨 Open Gradio UI
 
 ```
-http://127.0.0.1:8000/ui
+http://127.0.0.1:8000/
 ```
 
 Enter customer details and receive a churn prediction instantly.
