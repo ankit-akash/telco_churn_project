@@ -240,7 +240,7 @@ Enter customer details and receive a churn prediction instantly.
 POST
 
 ```
-/predict
+/
 ```
 
 Example Request
